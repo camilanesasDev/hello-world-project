@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react'
 
+const API_BASE = import.meta.env.VITE_API_URL || ''
+
 const SECTORES = [
   { value: 'tecnologia',   label: 'Tecnología / Software' },
   { value: 'retail',       label: 'Retail / Comercio' },
@@ -25,7 +27,7 @@ export default function App() {
   const [error, setError] = useState(null)
 
   useEffect(() => {
-    fetch('/api/dolar')
+    fetch(`${API_BASE}/api/dolar`)
       .then(r => r.json())
       .then(setDolar)
       .catch(() => {})
@@ -41,7 +43,7 @@ export default function App() {
     setError(null)
     setResult(null)
     try {
-      const res = await fetch('/api/valuation', {
+      const res = await fetch(`${API_BASE}/api/valuation`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
