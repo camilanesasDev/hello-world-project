@@ -25,11 +25,7 @@ data class ValuationResult(
 
 @RestController
 @RequestMapping("/api")
-@CrossOrigin(origins = [
-    "http://localhost:3000",
-    "https://hello-world-project-qndaikgu5-camimargnis-projects.vercel.app",
-    "https://hello-world-project-camimargnis-projects.vercel.app"
-])
+@CrossOrigin(origins = ["*"])
 class ValuationController {
 
     private val restTemplate = RestTemplate()
