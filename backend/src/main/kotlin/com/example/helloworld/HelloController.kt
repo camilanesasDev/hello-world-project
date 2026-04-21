@@ -1,6 +1,10 @@
 package com.example.helloworld
 
-import org.springframework.web.bind.annotation.*
+import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.RequestBody
+import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.client.RestTemplate
 
 data class ValuationRequest(
@@ -25,7 +29,6 @@ data class ValuationResult(
 
 @RestController
 @RequestMapping("/api")
-@CrossOrigin(origins = ["*"])
 class ValuationController {
 
     private val restTemplate = RestTemplate()
