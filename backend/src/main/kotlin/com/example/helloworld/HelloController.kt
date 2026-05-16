@@ -9,6 +9,7 @@ import org.springframework.web.client.RestTemplate
 
 data class ValuationRequest(
     val ingresos: Double = 0.0,
+    val egresos: Double = 0.0,
     val ebitda: Double = 0.0,
     val deudaNeta: Double = 0.0,
     val sector: String = ""

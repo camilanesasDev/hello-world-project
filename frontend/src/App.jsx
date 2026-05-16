@@ -20,7 +20,7 @@ const fmtARS = v =>
   new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS', maximumFractionDigits: 0 }).format(v)
 
 export default function App() {
-  const [form, setForm] = useState({ ingresos: '', ebitda: '', deudaNeta: '', sector: 'tecnologia' })
+  const [form, setForm] = useState({ ingresos: '', egresos: '', ebitda: '', deudaNeta: '', sector: 'tecnologia' })
   const [result, setResult] = useState(null)
   const [dolar, setDolar] = useState(null)
   const [loading, setLoading] = useState(false)
@@ -48,6 +48,7 @@ export default function App() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           ingresos: parseFloat(form.ingresos),
+          egresos: parseFloat(form.egresos),
           ebitda: parseFloat(form.ebitda),
           deudaNeta: parseFloat(form.deudaNeta) || 0,
           sector: form.sector,
@@ -84,6 +85,18 @@ export default function App() {
               value={form.ingresos}
               onChange={handleChange}
               placeholder="ej: 50.000.000"
+              required
+              min="0"
+            />
+          </div>
+          <div className="field">
+            <label>Egresos últimos 12 meses (ARS)</label>
+            <input
+              type="number"
+              name="egresos"
+              value={form.egresos}
+              onChange={handleChange}
+              placeholder="ej: 38.000.000"
               required
               min="0"
             />
